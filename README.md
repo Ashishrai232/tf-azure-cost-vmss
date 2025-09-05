@@ -2,4 +2,4 @@
 
 # pipeline image
 
-   ![Pipeline Diagram](image.png)
+   ![Pipeline Diagram](image-.png)
