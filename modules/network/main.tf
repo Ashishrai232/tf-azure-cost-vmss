@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = "${var.resource_group_name}-${var.resource_group_location}-vnet"
   location            = azurerm_resource_group.test-vmss.location
   resource_group_name = azurerm_resource_group.test-vmss.name
-  address_space       = ["10.0.0.0/16"] 
+  address_space       = var.vnet_address_space
   tags = var.tags
 }
 
@@ -26,19 +26,8 @@ resource "azurerm_subnet" "vnet-subnet" {
   name="${azurerm_virtual_network.vnet.name}-${var.tags.environment}-subnet"
   resource_group_name = azurerm_resource_group.test-vmss.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes = ["10.0.2.0/24"]
+  address_prefixes =var.subnet_address_prefixes
 }
-
-# now creating public ip for load balancer
-# sku =Standard because it is must for attaching it to load balancer
-resource "azurerm_public_ip" "pip" {
-  name="${azurerm_virtual_network.vnet.name}-${var.tags.environment}-alb-pip"
-  location = var.resource_group_location
-  resource_group_name = azurerm_resource_group.test-vmss.name
-  allocation_method = "Static"
-  sku = "Standard"
-  tags=var.tags
-} 
 
 resource "azurerm_network_security_group" "nsg" {
   name = "${azurerm_virtual_network.vnet.name}-${var.tags.environment}-vmss-nsg"
@@ -57,6 +46,20 @@ resource "azurerm_network_security_group" "nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+
+  security_rule {
+    name                       = "web"
+    priority                   = 1080
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = var.subnet_address_prefixes[0]
+  }
+
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg-association" {

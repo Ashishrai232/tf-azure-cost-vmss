@@ -1,16 +1,26 @@
-# #  variables for resource group
-# variable "resource_group_name" {
-#   type        = string
-#   description = "(Required) Name of Resource Group"
-# }
 
-# variable "resource_group_location" {
-#   type        = string
-#   description = "(Required) Location where we want to implement code"
-# }
+variable "subscription_id" {
+  description = "to pass your subscription id "
+  type = string
+}
+variable "resource_group_name" {
+  description = " name for the resource group and other resources."
+  type        = string
+  default     = "test-vmss"
+}
 
-# variable "rg_tags" {
-#   type        = map(string)
-#   description = "(Optional) Tags for Resource Group"
-# }
+variable "location" {
+  description = "The region where all resources will be deployed."
+  type        = string
+  default     = "East US"
+}
 
+
+variable "tags" {
+  description = "A map of tags to apply to all resources."
+  type        = map(string)
+  default = {
+    environment = "dev"
+    project     = "ASHISH-devops"
+  }
+}

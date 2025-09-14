@@ -10,13 +10,13 @@ variable "tags" {
 # ********** resource group - variables *********
 
 variable "resource_group_name" {
-    type  = "string"
+    type  = string
     description = "the name which will be used for this resource group. new will be created "
-  
+    
 }
 
 variable "resource_group_location" {
-    type  = "string"
+    type  = string
     description = "the location  which will be used for this resource group. new will be created "
   
 }
@@ -26,8 +26,14 @@ variable "resource_group_location" {
 # *****************variables for vnet
 
 
-variable "vnet-address_space" {
+variable "vnet_address_space" {
   type = list(string)
   description = "* this contains the address space"
   default = [ "10.0.0.0/16" ]
+}
+
+variable "subnet_address_prefixes" {
+  type        = list(string)
+  description = "A list of CIDR address prefixes for the subnet."
+  default     = ["10.0.2.0/24"]
 }

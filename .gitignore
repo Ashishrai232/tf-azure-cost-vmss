@@ -1,1 +1,4 @@
 .terraform
+vmss
+vmss.pub
+*.tfvars
