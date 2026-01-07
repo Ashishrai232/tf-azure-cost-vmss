@@ -1,15 +1,10 @@
-# Create an Azure resource group using azurerm_resource_group 
-# Create an Azure Virtual Network using azurerm_virtual_network
-# Create an Azure subnet using azurerm_subnet
-# Create an Azure public IP using azurerm_public_ip
+#  flow
+#   Azure resource group - Azure Virtual Network - Azure subnet - Azure public IP 
 # ------created the above in network module-----
-# Create an Azure Load Balancer using azurerm_lb
-# Create an Azure network interface using azurerm_network_interface
-# Create an Azure network interface load balancer backend address pool association using azurerm_network_interface_backend_address_pool_association
-# Create an Azure Linux Virtual Machine using azurerm_linux_virtual_machine
-# Create an Azure Virtual Machine Extension using azurerm_virtual_machine_extension
-# Create an Azure NAT Gateway using azurerm_nat_gateway
-# Create an Azure Bastion using azurerm_bastion_host
+#   Azure Load Balancer - Azure network interface -
+# network interface load balancer backend address pool association 
+#   Azure Linux Virtual Machine 
+#   Azure NAT Gateway 
 
 
 # pip will be applied to load balancer hence creating it here
