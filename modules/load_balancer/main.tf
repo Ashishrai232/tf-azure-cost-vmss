@@ -1,7 +1,7 @@
 #  flow
-#   Azure resource group - Azure Virtual Network - Azure subnet - Azure public IP 
+#   Azure resource group - Azure Virtual Network - Azure subnet - 
 # ------created the above in network module-----
-#   Azure Load Balancer - Azure network interface -
+#  Azure public IP - Azure Load Balancer - Azure network interface -
 # network interface load balancer backend address pool association 
 #   Azure Linux Virtual Machine 
 #   Azure NAT Gateway 
